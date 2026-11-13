@@ -1,0 +1,29 @@
+1 - SELECT
+    p.nome AS piloto,
+    r.pontos AS pontos
+FROM resultados_corrida r
+RIGHT JOIN pilotos p
+    ON r.piloto_id = p.id
+    AND r.gp = 'GP de Interlagos';
+
+2- SELECT
+    fm.nome AS fabricante,
+    e.nome AS equipe
+FROM equipes e
+RIGHT JOIN fabricantes_motor fm
+    ON e.motor_id = fm.id;
+
+3- SELECT
+    e.id,
+    e.nome,
+    e.motor_id
+FROM fabricantes_motor fm
+RIGHT JOIN equipes e
+    ON fm.id = e.motor_id
+WHERE fm.id IS NULL;
+
+4) a- Mostra os fabricantes, as equipes e os pilotos relacionados. Todos os pilotos aparecem, mesmo aqueles que não possuem equipe ou fabricante relacionado. Os campos sem correspondência aparecem como NULL.
+
+4) b- Mostra os pilotos que possuem resultados registrados no GP de Interlagos, apresentando o nome, o Grande Prêmio e os pontos conquistados. O WHERE elimina os pilotos que não possuem resultado nessa etapa.
+
+4) c- Mostra as equipes que não possuem nenhum piloto cadastrado. O RIGHT JOIN mantém todas as equipes e o WHERE seleciona aquelas que não possuem pilotos relacionados.
