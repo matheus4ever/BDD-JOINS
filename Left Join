@@ -1,0 +1,53 @@
+1- O LEFT JOIN é utilizado para unir duas tabelas, mostrando todos os registros da tabela da esquerda, mesmo que não tenham correspondência na tabela da direita. Quando não existe correspondência, os valores aparecem como NULL.
+
+2.1- Mostra todos os registros da primeira tabela, permite encontrar registros sem correspondência e facilita a consulta de dados relacionados entre tabelas.
+
+2.2- Pode apresentar valores NULL, pode deixar consultas mais complexas e em tabelas grandes, pode afetar o desempenho.
+
+3-  SELECT
+      cliente.id_cliente,
+      cliente.nome,
+      cliente.idade,
+      loja.nome AS loja,
+      loja.comprou,
+      loja.valor
+    FROM cliente
+    LEFT JOIN loja
+    ON cliente.id_cliente = loja.id_cliente; 
+
+4-  SELECT
+      cliente.nome,
+      loja.valor
+  FROM cliente
+  LEFT JOIN loja
+  ON cliente.id_cliente = loja.id_cliente
+  ORDER BY loja.valor ASC;
+
+5- SELECT
+    cliente.nome,
+    loja.valor
+FROM cliente
+LEFT JOIN loja
+ON cliente.id_cliente = loja.id_cliente
+ORDER BY cliente.nome ASC;
+
+6- SELECT
+    cliente.nome,
+    loja.valor
+FROM cliente
+LEFT JOIN loja
+ON cliente.id_cliente = loja.id_cliente
+ORDER BY loja.valor DESC
+LIMIT 1;
+
+7- SELECT
+    cliente.nome,
+    cliente.idade,
+    loja.valor
+FROM cliente
+LEFT JOIN loja
+ON cliente.id_cliente = loja.id_cliente
+ORDER BY cliente.idade DESC;
+
+8- LEFT JOIN: mostra todos os registros da tabela da esquerda, mesmo quando não existe correspondência na outra tabela.
+   INNER JOIN: mostra somente os registros que possuem correspondência nas duas tabelas.
